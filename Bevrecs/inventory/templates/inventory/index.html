@@ -253,40 +253,43 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body justify-content-center">
-                      <!-- add menu Form -->
-                            <form>
+                      <!-- add Ingridient Form -->
+                      <form action="{% url 'inventory:add_ingridients' %}" method="POST">
+                          {% csrf_token %}
+
                               <div class="row">
                                 <div class="col-6 mt-2">
                                   <label for="inputCategory"  class="form-label">Category</label>
-                                  <select id="inputCategory" class="form-select">
-                                    <option>Category 1</option>
-                                    <option>Category 2</option>
+                                  <select name="{{ ingridientForm.category.name }}" id="inputCategory" class="form-select">
+                                      {% for category in ingridientForm.category %}
+                                      <option value="{{ category.data.value }}">{{ category.data.label }}</option>
+                                      {% endfor %}
                                   </select>
                                 </div>
                                 <div class="col-6  mt-2">
                                   <label for="inputIngredientName" class="form-label">Ingredient</label>
-                                  <input type="text" placeholder="ingredient name...." class="form-control" id="inputIngredientName" required>
+                                  <input name="{{ ingridientForm.name.name }}" type="text" placeholder="ingredient name...." class="form-control" id="inputIngredientName" required>
                                 </div>
 
                                 <div class="col-6  mt-2">
                                   <label for="inputQty" class="form-label">Quantity (g)</label>
-                                  <input type="number"  placeholder="e.g. 20g..." class="form-control" id="inputQty" required>
+                                  <input name="{{ ingridientForm.quantity.name }}" type="number"  placeholder="e.g. 20g..." class="form-control" id="inputQty" required>
                                 </div>
 
                                 <div class="col-6  mt-2">
                                   <label for="inputPrice" class="form-label">Price</label>
-                                  <input type="number"  placeholder="price.." class="form-control" id="inputPrice" required>
+                                  <input name="{{ ingridientForm.price.name }}" type="number"  placeholder="price.." class="form-control" id="inputPrice" required>
                                 </div>
 
 
                                 <div class="col-6  mt-2">
                                   <label for="inputStockInDate" class="col-sm-2 form-label">StockDate</label>
-                                  <input type="date" class="form-control">
+                                  <input name="{{ ingridientForm.date_in.name }}" type="date" class="form-control">
                                 </div>
 
                                 <div class="col-6 mt-2">
                                    <label for="inputExpDate" class="col-sm-2 col-form-label">ExpirationDate</label>
-                                  <input type="date" class="form-control">
+                                  <input name="{{ ingridientForm.expiration.name }}" type="date" class="form-control">
                                 </div>
 
                                 <div class="text-center d-grip gap-2  mt-3">
@@ -294,7 +297,6 @@
                                   <button type="reset" class="btn btn-warning">Reset</button>
                                 </div>
                               </div>
-
                             </form><!-- Vertical Form -->
 
                     </div>

@@ -13,7 +13,7 @@ STOCK_CATEGORY = (
 class Stocks(models.Model):
     name = models.CharField(max_length=50)
     category = models.CharField(choices=STOCK_CATEGORY, max_length=10)
-    quantity = models.PositiveIntegerField(default=0)
+    quantity = models.PositiveIntegerField()
     price = models.FloatField()
     date_in = models.DateField()
     expiration = models.DateField()

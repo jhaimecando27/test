@@ -6,4 +6,5 @@ app_name = 'inventory'
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('add_ingridients', views.addIngridients, name='add_ingridients'),
 ]
