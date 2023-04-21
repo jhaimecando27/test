@@ -261,9 +261,7 @@
                                 <div class="col-6 mt-2">
                                   <label for="inputCategory"  class="form-label">Category</label>
                                   <select name="{{ ingridientForm.category.name }}" id="inputCategory" class="form-select">
-                                      {% for category in ingridientForm.category %}
-                                      <option value="{{ category.data.value }}">{{ category.data.label }}</option>
-                                      {% endfor %}
+                                      <option value="{{ ingridientForm.category.0.data.value }}">{{ ingridientForm.category.0.data.label }}</option>
                                   </select>
                                 </div>
                                 <div class="col-6  mt-2">
